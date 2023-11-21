@@ -21,7 +21,13 @@ app.get("/", function (req, res) {
 });
 
 // your first API endpoint...
-
+app.get("/api/whoami", function (req, res) {
+  const ip = req.ip;
+  const language = req.acceptsLanguages;
+  const software = req.protocol;
+  res.json({ ipaddress: ip, language, software });
+  console.log(os.platform);
+});
 // listen for requests :)
 var listener = app.listen(3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
